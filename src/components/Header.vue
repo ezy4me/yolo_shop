@@ -21,7 +21,8 @@
                             <li @mouseover="areOptionsVisible = true, optionName = 'Женское'" class="header-menu__item">
                                 <a class="header-menu__link link" href="#">Женское</a>
                             </li>
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Аксессуары'" class="header-menu__item">
+                            <li @mouseover="areOptionsVisible = true, optionName = 'Аксессуары'"
+                                class="header-menu__item">
                                 <a class="header-menu__link link" href="#">Аксессуры</a>
                             </li>
                             <li @mouseover="areOptionsVisible = true, optionName = 'Скидки'" class="header-menu__item">
@@ -60,11 +61,109 @@
                 </div>
             </div>
         </div>
-        <HeaderDropdown  @mouseleave="areOptionsVisible = false" :categories="categories" :brands="brands"
-            v-if="areOptionsVisible">
-            <template v-slot:col-1>
-                <HeaderDropdownItem :start=0 :end=10 :optionName="optionName" :brands="brands">{{brand}}</HeaderDropdownItem>
-                <!-- <p class="header-dropdown__title">Все бренды</p>
+        <HeaderDropdown @mouseleave="areOptionsVisible = false" v-if="areOptionsVisible">
+            <template v-if="optionName === 'Новинки'" v-slot:body>
+                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=10>
+                </HeaderDropdownItem>
+                <HeaderDropdownItem :objectValue="categories" :objectName='"Все категории"' :start=0 :end=10>
+                </HeaderDropdownItem>
+            </template>
+            <template v-else-if="optionName === 'Бренды'" v-slot:body>
+                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=40>
+                </HeaderDropdownItem>
+            </template>
+            <template v-else-if="optionName === 'Мужское'" v-slot:body>
+                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=10>
+                </HeaderDropdownItem>
+                <HeaderDropdownItem :objectValue="categories" :objectName='"Все категории"' :start=0 :end=10>
+                </HeaderDropdownItem>
+            </template>
+            <template v-else v-slot:body>
+                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=10>
+                </HeaderDropdownItem>
+                <HeaderDropdownItem :objectValue="categories" :objectName='"Все категории"' :start=0 :end=10>
+                </HeaderDropdownItem>
+            </template>
+            <template v-if="optionName === 'Новинки'" v-slot:banner>
+                <GridBanner>
+                    <template v-slot:item-1>
+                        <img class="banner__image" src="@/assets/images/1.jpg" alt="">
+                        <p class="banner__link">Adidas Original</p>
+                    </template>
+                    <template v-slot:item-2>
+                        <img class="banner__image" src="@/assets/images/2.jpg" alt="">
+                        <p class="banner__link">Maison Kitsune</p>
+                    </template>
+                    <template v-slot:item-3>
+                        <img class="banner__image" src="@/assets/images/3.jpg" alt="">
+                        <p class="banner__link">Bronze 56k</p>
+                    </template>
+                    <template v-slot:item-4>
+                        <img class="banner__image" src="@/assets/images/4.jpg" alt="">
+                        <p class="banner__link">Premiata</p>
+                    </template>
+                </GridBanner>
+            </template>
+            <template v-else-if="optionName === 'Бренды'" v-slot:banner>
+                <GridBanner>
+                    <template v-slot:item-2>
+                        <img class="banner__image" src="@/assets/images/3.jpg" alt="">
+                        <p class="banner__link">Maison Kitsune</p>
+                    </template>
+                    <template v-slot:item-4>
+                        <img class="banner__image" src="@/assets/images/1.jpg" alt="">
+                        <p class="banner__link">Premiata</p>
+                    </template>
+                </GridBanner>
+            </template>
+            <template v-else-if="optionName === 'Мужское'" v-slot:banner>
+                <GridBanner>
+                    <template v-slot:item-1>
+                        <img class="banner__image" src="@/assets/images/5.jpg" alt="">
+                        <p class="banner__link">Обувь</p>
+                    </template>
+                    <template v-slot:item-2>
+                        <img class="banner__image" src="@/assets/images/6.jpg" alt="">
+                        <p class="banner__link">Одежда</p>
+                    </template>
+                </GridBanner>
+            </template>
+            <template v-else-if="optionName === 'Женское'" v-slot:banner>
+                <GridBanner>
+                    <template v-slot:item-1>
+                        <img class="banner__image" src="@/assets/images/7.jpg" alt="">
+                        <p class="banner__link">Обувь</p>
+                    </template>
+                    <template v-slot:item-2>
+                        <img class="banner__image" src="@/assets/images/8.jpg" alt="">
+                        <p class="banner__link">Одежда</p>
+                    </template>
+                </GridBanner>
+            </template>
+            <template v-else-if="optionName === 'Аксессуары'" v-slot:banner>
+                <GridBanner>
+                    <template v-slot:item-1>
+                        <img class="banner__image" src="@/assets/images/9.jpg" alt="">
+                        <p class="banner__link">Кепки</p>
+                    </template>
+                    <template v-slot:item-2>
+                        <img class="banner__image" src="@/assets/images/10.jpg" alt="">
+                        <p class="banner__link">Солнцезащитные очки</p>
+                    </template>
+                    <template v-slot:item-3>
+                        <img class="banner__image" src="@/assets/images/11.jpg" alt="">
+                        <p class="banner__link">Рюкзаки и сумки</p>
+                    </template>
+                    <template v-slot:item-4>
+                        <img class="banner__image" src="@/assets/images/12.jpg" alt="">
+                        <p class="banner__link">Наручные часы</p>
+                    </template>
+                </GridBanner>
+            </template>
+            <!-- <template v-slot:col-1>
+                <HeaderDropdownItem :start=0 :end=10 :optionName="optionName" :brands="brands">{{brand}}</HeaderDropdownItem> -->
+
+            <!-- <p class="header-dropdown__title">Все бренды</p>
                 <ul class="header-dropdown__list">
                     <li class="header-dropdown__item" v-for="brand in brands.slice(0, 10)" :key="brand.id">
                         <a class="header-dropdown__link link" href="#">
@@ -72,11 +171,13 @@
                         </a>
                     </li>
                 </ul> -->
-            </template>
+
+            <!-- </template>
             <template v-slot:col-2>
                 <HeaderDropdownItem :start=10 :end=20 :optionName="optionName" v-if="optionName === 'Бренды'" :brands="brands">{{brand}}</HeaderDropdownItem>
-                <HeaderDropdownItem v-else :categories="categories">{{category}}</HeaderDropdownItem>
-                <!-- <p class="header-dropdown__title">Все категории</p>
+                <HeaderDropdownItem v-else :categories="categories">{{category}}</HeaderDropdownItem> -->
+
+            <!-- <p class="header-dropdown__title">Все категории</p>
                 <ul class="header-dropdown__list">
                     <li class="header-dropdown__item" v-for="category in categories.slice(0, 10)" :key="category.id">
                         <a class="header-dropdown__link link" href="#">
@@ -84,8 +185,9 @@
                         </a>
                     </li>
                 </ul> -->
-            </template>
-            <template v-slot:banner>
+
+            <!-- </template> -->
+            <!-- <template v-slot:banner>
                 <div class="banner__item item-1">
                     <img class="banner__image" src="@/assets/images/1.jpg" alt="">
                     <p class="banner__link">Adidas Original</p>
@@ -102,7 +204,7 @@
                     <img class="banner__image" src="@/assets/images/4.jpg" alt="">
                     <p class="banner__link">Premiata</p>
                 </div>
-            </template>
+            </template> -->
         </HeaderDropdown>
     </div>
 </template>
@@ -111,6 +213,7 @@
 import HeaderDropdown from './HeaderDropdown.vue'
 import ModalWindow from './ModalWindow.vue'
 import HeaderDropdownItem from './HeaderDropdownItem.vue'
+import GridBanner from './GridBanner.vue'
 export default {
     // props: {
     //     brands: {
@@ -128,10 +231,11 @@ export default {
     // },
     name: 'v-header',
     components: {
-    HeaderDropdown,
-    ModalWindow,
-    HeaderDropdownItem
-},
+        HeaderDropdown,
+        ModalWindow,
+        HeaderDropdownItem,
+        GridBanner
+    },
     data() {
         return {
             areOptionsVisible: false,
@@ -140,42 +244,62 @@ export default {
             start: 0,
             end: 0,
             brands: [
-        { id: 1, brand: 'adidas Originals' },
-        { id: 2, brand: 'CASIO' },
-        { id: 3, brand: 'Edwin' },
-        { id: 4, brand: 'Gramicci' },
-        { id: 5, brand: 'Lacoste' },
-        { id: 6, brand: 'Ligne Blanche' },
-        { id: 7, brand: 'New Balance' },
-        { id: 8, brand: 'Polo Ralph Lauren' },
-        { id: 9, brand: 'Premiata' },
-        { id: 10, brand: 'Puma' },
-        { id: 11, brand: 'Reebok' },
-        { id: 12, brand: 'Ripndip' },
-        { id: 13, brand: 'Y-3' },
-        { id: 14, brand: 'Y-3' },
-        { id: 15, brand: 'Y-3' },
-        { id: 16, brand: 'Y-3' },
-        { id: 17, brand: 'Y-3' },
-        { id: 18, brand: 'Y-3' },
-        { id: 19, brand: 'Y-3' },
-        { id: 20, brand: 'Y-3' },
-      ],
-      categories: [
-        { id: 1, category: 'Кеды', sex: 'm' },
-        { id: 2, category: 'Кроссовки', sex: 'w' },
-        { id: 3, category: 'Куртки', sex: 'm' },
-        { id: 4, category: 'Брюки', sex: 'w' },
-        { id: 5, category: 'Джинсы', sex: 'm' },
-        { id: 6, category: 'Лонгсливы', sex: 'm' },
-        { id: 7, category: 'Рубашки', sex: 'm' },
-        { id: 8, category: 'Свитеры', sex: 'm' },
-        { id: 9, category: 'Толстовки', sex: 'm' },
-        { id: 10, category: 'Футболки', sex: 'm' },
-        { id: 11, category: 'Косметика', sex: 'w' },
-        { id: 12, category: 'Наручные часы', sex: 'w' },
-        { id: 13, category: 'Рюкзаки', sex: 'm' },
-      ],
+                { id: 1, value: 'adidas Originals' },
+                { id: 2, value: 'CASIO' },
+                { id: 3, value: 'Edwin' },
+                { id: 4, value: 'Gramicci' },
+                { id: 5, value: 'Lacoste' },
+                { id: 6, value: 'Ligne Blanche' },
+                { id: 7, value: 'New Balance' },
+                { id: 8, value: 'Polo Ralph Lauren' },
+                { id: 9, value: 'Premiata' },
+                { id: 10, value: 'Puma' },
+                { id: 11, value: 'Reebok' },
+                { id: 12, value: 'Ripndip' },
+                { id: 13, value: 'Polo Ralph Lauren' },
+                { id: 14, value: 'Polo Ralph Lauren' },
+                { id: 15, value: 'Polo Ralph Lauren' },
+                { id: 16, value: 'Polo Ralph Lauren' },
+                { id: 17, value: 'Polo Ralph Lauren' },
+                { id: 18, value: 'Polo Ralph Lauren' },
+                { id: 19, value: 'Polo Ralph Lauren' },
+                { id: 20, value: 'New Balance' },
+                { id: 21, value: 'Polo Ralph Lauren' },
+                { id: 22, value: 'Polo Ralph Lauren' },
+                { id: 23, value: 'Polo Ralph Lauren' },
+                { id: 24, value: 'Polo Ralph Lauren' },
+                { id: 25, value: 'Polo Ralph Lauren' },
+                { id: 26, value: 'Y-3' },
+                { id: 27, value: 'Y-3' },
+                { id: 28, value: 'Y-3' },
+                { id: 29, value: 'Polo Ralph Lauren' },
+                { id: 30, value: 'Polo Ralph Lauren' },
+                { id: 31, value: 'Polo Ralph Lauren' },
+                { id: 32, value: 'Polo Ralph Lauren' },
+                { id: 33, value: 'Polo Ralph Lauren' },
+                { id: 34, value: 'Polo Ralph Lauren' },
+                { id: 35, value: 'Polo Ralph Lauren' },
+                { id: 36, value: 'Polo Ralph Lauren' },
+                { id: 37, value: 'Polo Ralph Lauren' },
+                { id: 38, value: 'Polo Ralph Lauren' },
+                { id: 39, value: 'Polo Ralph Lauren' },
+                { id: 40, value: 'Polo Ralph Lauren' },
+            ],
+            categories: [
+                { id: 1, value: 'Кеды', sex: 'm' },
+                { id: 2, value: 'Кроссовки', sex: 'w' },
+                { id: 3, value: 'Куртки', sex: 'm' },
+                { id: 4, value: 'Брюки', sex: 'w' },
+                { id: 5, value: 'Джинсы', sex: 'm' },
+                { id: 6, value: 'Лонгсливы', sex: 'm' },
+                { id: 7, value: 'Рубашки', sex: 'm' },
+                { id: 8, value: 'Свитеры', sex: 'm' },
+                { id: 9, value: 'Толстовки', sex: 'm' },
+                { id: 10, value: 'Футболки', sex: 'm' },
+                { id: 11, value: 'Косметика', sex: 'w' },
+                { id: 12, value: 'Наручные часы', sex: 'w' },
+                { id: 13, value: 'Рюкзаки', sex: 'm' },
+            ],
         }
     },
     methods: {
@@ -190,36 +314,9 @@ export default {
 </script>
 
 <style>
-.banner__item {
-    margin: 10px;
-
-}
-
-.banner__image {
-    border-radius: 5px;
-}
-
-.item-1 {
-    grid-area: item-1;
-}
-
-.banner__link {
-    text-transform: uppercase;
-}
-
-.item-2 {
-    grid-area: item-2;
-}
-
-.item-3 {
-    grid-area: item-3;
-}
-
-.item-4 {
-    grid-area: item-4;
-}
-
 .header-dropdown__list {
+    height: 400px;
+    flex-wrap: wrap;
     display: flex;
     padding: 0;
     flex-direction: column;
@@ -229,6 +326,12 @@ export default {
 .header-dropdown__item {
     list-style: none;
     margin: 8px 0;
+    margin-right: 2rem;
+
+}
+
+.header-dropdown__item:last-child {
+    margin-right: 0;
 }
 
 .header-dropdown__title {
@@ -236,15 +339,7 @@ export default {
 }
 
 
-.banners {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    gap: 0px 0px;
-    grid-template-areas:
-        "item-1 item-2"
-        "item-3 item-4";
-}
+
 
 .popup {
     display: flex;

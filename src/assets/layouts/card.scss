@@ -1,0 +1,32 @@
+.card {
+    width: 264px;
+    background: #f2f2f2;
+    // .card__image
+
+    &__image {
+    }
+
+    // .card__title
+
+    &__title {
+        font-size: 16px;
+    }
+    &__category{
+        font-size: 14px;
+        color:gray;
+        margin: 2px;
+    }
+    // .card__subtitle
+
+    &__subtitle {
+        margin: 2px;
+        font-size: 14px;
+        color:gray;
+    }
+
+    // .card__price
+
+    &__price {
+        font-size: 16px;
+    }
+}

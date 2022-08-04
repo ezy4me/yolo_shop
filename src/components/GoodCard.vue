@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="product-card">
     <div class="card">
       <div class="card__image">
         <img src="@/assets/images/shoes.jpg" alt="">
@@ -28,8 +28,5 @@ export default {
 </script>
 
 <style>
-.card__container{
-    display: flex;
-    padding: 0 !important;
-}
+
 </style>

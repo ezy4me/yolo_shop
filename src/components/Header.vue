@@ -160,6 +160,26 @@
                     </template>
                 </GridBanner>
             </template>
+            <template v-else-if="optionName === 'Скидки'" v-slot:banner>
+                <GridBanner>
+                    <template v-slot:item-1>
+                        <img class="banner__image" src="@/assets/images/9.jpg" alt="">
+                        <p class="banner__link">Кепки</p>
+                    </template>
+                    <template v-slot:item-2>
+                        <img class="banner__image" src="@/assets/images/10.jpg" alt="">
+                        <p class="banner__link">Солнцезащитные очки</p>
+                    </template>
+                    <template v-slot:item-3>
+                        <img class="banner__image" src="@/assets/images/11.jpg" alt="">
+                        <p class="banner__link">Рюкзаки и сумки</p>
+                    </template>
+                    <template v-slot:item-4>
+                        <img class="banner__image" src="@/assets/images/12.jpg" alt="">
+                        <p class="banner__link">Наручные часы</p>
+                    </template>
+                </GridBanner>
+            </template>
             <!-- <template v-slot:col-1>
                 <HeaderDropdownItem :start=0 :end=10 :optionName="optionName" :brands="brands">{{brand}}</HeaderDropdownItem> -->
 

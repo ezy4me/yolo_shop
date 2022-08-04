@@ -1,6 +1,27 @@
 <template>
   <div class="wrappe">
     <Header :brands="brands" :categories="categories"></Header>
+    <div class="container container__catalog">
+      <div class="toolbar" style="background:greenyellow">Toolbar</div>
+      <div class="catalog">
+        <div class="sticky" style="background:lightblue">
+          <div class="sticky__body">
+            <div class="div">dadsada</div>
+            <div class="div">fsdfsdfs</div>
+            <div class="div">fsdfsdfs</div>
+            <div class="div">fsdfsdfs</div>
+            <div class="div">fsdfsdfs</div>
+          </div>
+        </div>
+        <div class="catalog__wrapper">
+          <div class="product-catalog">
+            <!-- <div class="product-card" v-for="n in 15" :key="n"> -->
+              <GoodCard  v-for="n in 15" :key="n"></GoodCard>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="main-container container">
       <div class="main-category">
         <div class="main-category__wrapper">
@@ -30,7 +51,6 @@
       <h3 class="product-slider__title">Популярные товары</h3>
       <Carousel></Carousel>
     </div>
-
     <Footer></Footer>
   </div>
 
@@ -40,46 +60,18 @@ import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Carousel from './components/Carousel.vue'
 import SaleBanner from './components/SaleBanner.vue'
+import GoodCard from './components/GoodCard.vue'
 export default {
 
   components: {
     Header,
     Footer,
     Carousel,
-    SaleBanner
+    SaleBanner,
+    GoodCard
 },
   data() {
     return {
-      // brands: [
-      //   { id: 1, brand: 'adidas Originals' },
-      //   { id: 2, brand: 'CASIO' },
-      //   { id: 3, brand: 'Edwin' },
-      //   { id: 4, brand: 'Gramicci' },
-      //   { id: 5, brand: 'Lacoste' },
-      //   { id: 6, brand: 'Ligne Blanche' },
-      //   { id: 7, brand: 'New Balance' },
-      //   { id: 8, brand: 'Polo Ralph Lauren' },
-      //   { id: 9, brand: 'Premiata' },
-      //   { id: 10, brand: 'Puma' },
-      //   { id: 11, brand: 'Reebok' },
-      //   { id: 12, brand: 'Ripndip' },
-      //   { id: 13, brand: 'Y-3' },
-      // ],
-      // categories: [
-      //   { id: 1, category: 'Кеды' },
-      //   { id: 2, category: 'Кроссовки' },
-      //   { id: 3, category: 'Куртки' },
-      //   { id: 4, category: 'Брюки' },
-      //   { id: 5, category: 'Джинсы' },
-      //   { id: 6, category: 'Лонгсливы' },
-      //   { id: 7, category: 'Рубашки' },
-      //   { id: 8, category: 'Свитеры' },
-      //   { id: 9, category: 'Толстовки' },
-      //   { id: 10, category: 'Футболки' },
-      //   { id: 11, category: 'Косметика' },
-      //   { id: 12, category: 'Наручные часы' },
-      //   { id: 13, category: 'Рюкзаки' },
-      // ],
 
     }
   },
@@ -87,6 +79,70 @@ export default {
 }
 </script>
 <style lang="scss">
+.container{
+  &__catalog{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.toolbar{
+  width: 100%;
+}
+.catalog{
+  display: flex;
+  width: 100%;
+  &__wrapper{
+    // width: 56.8rem;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 56.7rem;
+    flex: 0 1 56.7rem;
+    opacity: 1;
+    -webkit-transition: opacity .3s ease;
+    -o-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+    // flex-grow: 3;
+  }
+}
+
+.product-catalog{
+  background: pink;
+    // display: flex;
+    // flex-wrap: wrap;
+  justify-content: center;
+  display: grid;
+    justify-items: flex-start;
+    grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit,minmax(210px,18rem));
+    // max-width: 85.6rem;
+    gap: 0.9rem;
+    // min-width: 56.8rem;
+}
+.product-card{
+  // margin: 5px;
+  //       width: fit-content;
+    //   display: block;
+    // width: 100%;
+    //     max-width: 28rem;
+    // // max-width: 100%;
+    // max-height: 100%;
+    padding: 3.6rem 0;
+    // background-color: var(--product-card-bg);
+    // border-radius: 0.4rem;
+    // position: relative;
+
+    //   width: fit-content;
+    // display: flex;
+    // flex-direction: column;
+}
+.sticky{
+  
+  position: relative;
+  &__body{
+    width: 264px;
+  }
+  // flex-grow: 1;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

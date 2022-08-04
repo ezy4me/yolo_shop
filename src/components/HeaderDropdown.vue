@@ -51,6 +51,7 @@ export default {
     justify-content: center;
 }
 .header-dropdown {
+    height: 540px;
     width: 100%;
     background: #fff;
     -webkit-box-shadow: 0px 5px 5px -5px rgba(34, 60, 80, 0.6);
@@ -60,6 +61,7 @@ export default {
     position: absolute;
     z-index: 5;
     line-height: normal;
+    border-top: 1px solid rgba(34, 60, 80, 0.1);
     /* margin: 0 -1rem; */
 }
 

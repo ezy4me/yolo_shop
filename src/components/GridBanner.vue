@@ -42,14 +42,18 @@ export default {
         "item-1 item-2"
         "item-3 item-4";
 }
-
+.banner__link{
+    margin-top: 1.2rem;
+}
 .banner__item {
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
 
 }
 
 .banner__image {
     border-radius: 5px;
+    /* width: 260px; */
 }
 
 .item-1 {
@@ -71,4 +75,17 @@ export default {
 .item-4 {
     grid-area: item-4;
 }
+
+/* .item-1:empty{
+    display: none;
+}
+.item-2:empty{
+    display: none;
+}
+.item-3:empty{
+    display: none;
+}
+.item-4:empty{
+    display: none;
+} */
 </style>

@@ -1,0 +1,231 @@
+{
+  "brands": [
+    {
+      "id": 1,
+      "value": "adidas Originals"
+    },
+    {
+      "id": 2,
+      "value": "CASIO"
+    },
+    {
+      "id": 3,
+      "value": "Edwin"
+    },
+    {
+      "id": 4,
+      "value": "Gramicci"
+    },
+    {
+      "id": 5,
+      "value": "Lacoste"
+    },
+    {
+      "id": 6,
+      "value": "Ligne Blanche"
+    },
+    {
+      "id": 7,
+      "value": "New Balance"
+    },
+    {
+      "id": 8,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 9,
+      "value": "Premiata"
+    },
+    {
+      "id": 10,
+      "value": "Puma"
+    },
+    {
+      "id": 11,
+      "value": "Reebok"
+    },
+    {
+      "id": 12,
+      "value": "Ripndip"
+    },
+    {
+      "id": 13,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 14,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 15,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 16,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 17,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 18,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 19,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 20,
+      "value": "New Balance"
+    },
+    {
+      "id": 21,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 22,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 23,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 24,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 25,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 26,
+      "value": "Y-3"
+    },
+    {
+      "id": 27,
+      "value": "Y-3"
+    },
+    {
+      "id": 28,
+      "value": "Y-3"
+    },
+    {
+      "id": 29,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 30,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 31,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 32,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 33,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 34,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 35,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 36,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 37,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 38,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 39,
+      "value": "Polo Ralph Lauren"
+    },
+    {
+      "id": 40,
+      "value": "Polo Ralph Lauren"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "value": "Кеды",
+      "sex": "m"
+    },
+    {
+      "id": 2,
+      "value": "Кроссовки",
+      "sex": "w"
+    },
+    {
+      "id": 3,
+      "value": "Куртки",
+      "sex": "m"
+    },
+    {
+      "id": 4,
+      "value": "Брюки",
+      "sex": "w"
+    },
+    {
+      "id": 5,
+      "value": "Джинсы",
+      "sex": "m"
+    },
+    {
+      "id": 6,
+      "value": "Лонгсливы",
+      "sex": "m"
+    },
+    {
+      "id": 7,
+      "value": "Рубашки",
+      "sex": "m"
+    },
+    {
+      "id": 8,
+      "value": "Свитеры",
+      "sex": "m"
+    },
+    {
+      "id": 9,
+      "value": "Толстовки",
+      "sex": "m"
+    },
+    {
+      "id": 10,
+      "value": "Футболки",
+      "sex": "m"
+    },
+    {
+      "id": 11,
+      "value": "Косметика",
+      "sex": "w"
+    },
+    {
+      "id": 12,
+      "value": "Наручные часы",
+      "sex": "w"
+    },
+    {
+      "id": 13,
+      "value": "Рюкзаки",
+      "sex": "m"
+    }
+  ]
+}

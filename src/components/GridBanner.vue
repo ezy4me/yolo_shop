@@ -1,28 +1,31 @@
 <template>
     <div class="grid-banners">
-        <div class="banner__item item-1">
+        <slot>
+
+        </slot>
+        <!-- <div class="banner__item item-1">
             <slot name="item-1">
-                
+
             </slot>
         </div>
         <div class="banner__item item-2">
             <slot name="item-2">
-                
+
             </slot>
 
         </div>
         <div class="banner__item item-3">
             <slot name="item-3">
-                
+
             </slot>
 
         </div>
         <div class="banner__item item-4">
             <slot name="item-4">
-                
+
             </slot>
 
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -34,26 +37,29 @@ export default {
 
 <style>
 .grid-banners {
+    height: 100%;
+    /* margin-top: 0.5rem; */
+    /* background: pink; */
+    justify-content: center;
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    gap: 0px 0px;
-    grid-template-areas:
-        "item-1 item-2"
-        "item-3 item-4";
+    justify-items: flex-start;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 17rem));
+    gap: 0.9rem;
 }
-.banner__link{
-    margin-top: 1.2rem;
+
+.banner__link {
+    margin: 0.5rem 0 0;
 }
+
 .banner__item {
-    margin-top: 10px;
-    margin-right: 10px;
+    width: 100%;
 
 }
 
 .banner__image {
     border-radius: 5px;
-    /* width: 260px; */
+    width: 100%;
 }
 
 .item-1 {
@@ -75,17 +81,4 @@ export default {
 .item-4 {
     grid-area: item-4;
 }
-
-/* .item-1:empty{
-    display: none;
-}
-.item-2:empty{
-    display: none;
-}
-.item-3:empty{
-    display: none;
-}
-.item-4:empty{
-    display: none;
-} */
 </style>

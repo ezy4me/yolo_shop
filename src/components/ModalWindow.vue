@@ -1,10 +1,9 @@
 <template>
-  <transition name="modal-fade">
+    <transition name="modal-fade">
         <div class="modal-backdrop">
             <div class="modal-v" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
                 <header class="modal-header" id="modalTitle">
                     <slot name="header">
-
                         <button type="button" class="btn-close" @click="close" aria-label="Close modal">
                             x
                         </button>
@@ -26,7 +25,7 @@
 <script>
 
 export default {
-name: 'modal-window',
+    name: 'modal-window',
     methods: {
         close() {
             this.$emit('close');
@@ -46,11 +45,10 @@ name: 'modal-window',
 }
 
 .modal-v {
-
     background: #FFFFFF;
--webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
--moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     overflow-x: auto;
     display: flex;
     flex-direction: column;
@@ -59,7 +57,7 @@ box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.1);
 .modal-header,
 .modal-footer {
     display: flex;
-    
+
 }
 
 .modal-header {

@@ -1,7 +1,9 @@
 * {
     box-sizing: border-box;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: $font-family;
+    color: $primary-color;
 }
+
 body {
     margin: 0;
 }
@@ -20,32 +22,17 @@ body {
         width: 50px;
     }
 }
-.icon{
+
+.icon {
     font-size: 28px;
 }
+
 .link {
-    text-decoration: none;
-    color: #000;
+    @extend %link-style;
     display: inline-block;
     line-height: 1;
-    font-size: 12px;
-    font: inherit;
 }
 
-.link:after {
-    display: block;
-    content: "";
-    height: 2px;
-    width: 0%;
-    background-color: #225384;
-    transition: width 0.3s ease-in-out;
-}
-
-.link:hover:after,
-.link:focus:after {
-    width: 100%;
-}
-
-.link:hover {
-    color: #225384;
+.btn {
+    @extend %btn-style;
 }

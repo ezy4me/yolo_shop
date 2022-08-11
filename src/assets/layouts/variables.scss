@@ -1,0 +1,46 @@
+$primary-color: #000;
+$primary-color-80: rgba(0, 0, 0, 0.8);
+$primary-color-50: rgba(0, 0, 0, 0.5);
+
+$link-color-active: #225384;
+$hover-color: #f2f2f2;
+
+
+$font-size: 16px;
+$font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+$background-color: #f2f2f2;
+$list-style: none;
+$text-decoration: none;
+
+/// LINK ///
+%link-style {
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+}
+
+%link-style::after {
+    display: block;
+    content: "";
+    height: 2px;
+    width: 0%;
+    background-color: #225384;
+    transition: width 0.3s ease-in-out;
+}
+
+%link-style:hover:after,
+%link-style:focus:after {
+    width: 100%;
+}
+
+%link-style:hover {
+    color: #225384;
+}
+
+%btn-style {
+    color: #fff;
+    padding: 10px;
+    border: 0;
+    background: #000;
+}

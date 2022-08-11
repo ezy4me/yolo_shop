@@ -4,42 +4,26 @@
             <!-- <div class="header__body"> -->
             <div class="header__body">
                 <div class="logo">
-                    <img class="logo__img" src="@/assets/images/logo.png" alt="">
+                    <router-link to="/">
+                        <img class="logo__img" src="@/assets/images/logo.png" alt="">
+                    </router-link>
                 </div>
                 <div class="header__main">
                     <nav class="header__menu">
                         <ul class="header-menu__list">
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Новинки'" class="header-menu__item">
-                                <a class="header-menu__link link" href="#">Новинки</a>
-                            </li>
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Бренды'" class="header-menu__item">
-                                <a class="header-menu__link link" href="#">Бренды</a>
-                            </li>
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Мужское'" class="header-menu__item">
-                                <a class="header-menu__link link" href="#">Мужское</a>
-                            </li>
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Женское'" class="header-menu__item">
-                                <a class="header-menu__link link" href="#">Женское</a>
-                            </li>
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Аксессуары'"
-                                class="header-menu__item">
-                                <a class="header-menu__link link" href="#">Аксессуры</a>
-                            </li>
-                            <li @mouseover="areOptionsVisible = true, optionName = 'Скидки'" class="header-menu__item">
-                                <a class="header-menu__link link" href="#">Скидки</a>
+                            <li class="header-menu__item" v-for="(headerMenuItem, index) in headerMenuList"
+                                :key="index">
+                                <router-link @mouseover="areOptionsVisible = true, optionName = headerMenuItem.name"
+                                    :to="headerMenuItem.path" class="header-menu__link link">
+                                    {{ headerMenuItem.value }}
+                                </router-link>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="header__actions">
-                <div class="header__icon">
-                    <fa class="icon" icon="search"></fa>
-                </div>
-                <div class="header__icon">
-                    <fa class="icon" style="color:red" icon="heart"></fa>
-                </div>
-                <div class="header__icon">
+                <div v-for="(icon, index) in headerMenuIcons" :key="index" class="header__icon">
                     <ModalWindow v-show="isModalVisible" @close="closeModal">
                         <template v-slot:body>
                             <div class="popup">
@@ -49,182 +33,62 @@
                                 <input class="popup__input" type="text" placeholder="Введите ваш логин..">
                                 <input class="popup__input" type="text" placeholder="Введите ваш пароль...">
                                 <p>Зарегистриваться</p>
-                                <button class="popup__button">Войти</button>
+                                <button class="btn popup__button">Войти</button>
                             </div>
                         </template>
                     </ModalWindow>
-                    <fa @click="showModal" class="icon" icon="user">
+                    <fa @click="showModal" class="icon" :icon="icon.name">
                     </fa>
-                </div>
-                <div class="header__icon">
-                    <fa class="icon" icon="shopping-bag"></fa>
                 </div>
             </div>
         </div>
         <HeaderDropdown @mouseleave="areOptionsVisible = false" v-if="areOptionsVisible">
-            <template v-if="optionName === 'Новинки'" v-slot:body>
-                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=10>
-                </HeaderDropdownItem>
-                <HeaderDropdownItem :objectValue="categories" :objectName='"Все категории"' :start=0 :end=10>
-                </HeaderDropdownItem>
-            </template>
-            <template v-else-if="optionName === 'Бренды'" v-slot:body>
-                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=40>
-                </HeaderDropdownItem>
-            </template>
-            <template v-else-if="optionName === 'Мужское'" v-slot:body>
-                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=10>
-                </HeaderDropdownItem>
-                <HeaderDropdownItem :objectValue="categories" :objectName='"Все категории"' :start=0 :end=10>
-                </HeaderDropdownItem>
-            </template>
-            <template v-else v-slot:body>
-                <HeaderDropdownItem :objectValue="brands" :objectName='"Все бренды"' :start=0 :end=10>
-                </HeaderDropdownItem>
-                <HeaderDropdownItem :objectValue="categories" :objectName='"Все категории"' :start=0 :end=10>
-                </HeaderDropdownItem>
-            </template>
-            <template v-if="optionName === 'Новинки'" v-slot:banner>
-                <GridBanner>
-                    <template v-slot:item-1>
-                        <img class="banner__image" src="@/assets/images/1.jpg" alt="">
-                        <p class="banner__link">Adidas Original</p>
-                    </template>
-                    <template v-slot:item-2>
-                        <img class="banner__image" src="@/assets/images/2.jpg" alt="">
-                        <p class="banner__link">Maison Kitsune</p>
-                    </template>
-                    <template v-slot:item-3>
-                        <img class="banner__image" src="@/assets/images/3.jpg" alt="">
-                        <p class="banner__link">Bronze 56k</p>
-                    </template>
-                    <template v-slot:item-4>
-                        <img class="banner__image" src="@/assets/images/4.jpg" alt="">
-                        <p class="banner__link">Premiata</p>
-                    </template>
-                </GridBanner>
-            </template>
-            <template v-else-if="optionName === 'Бренды'" v-slot:banner>
-                <GridBanner>
-                    <template v-slot:item-2>
-                        <img class="banner__image" src="@/assets/images/3.jpg" alt="">
-                        <p class="banner__link">Maison Kitsune</p>
-                    </template>
-                    <template v-slot:item-4>
-                        <img class="banner__image" src="@/assets/images/1.jpg" alt="">
-                        <p class="banner__link">Premiata</p>
-                    </template>
-                </GridBanner>
-            </template>
-            <template v-else-if="optionName === 'Мужское'" v-slot:banner>
-                <GridBanner>
-                    <template v-slot:item-1>
-                        <img class="banner__image" src="@/assets/images/5.jpg" alt="">
-                        <p class="banner__link">Обувь</p>
-                    </template>
-                    <template v-slot:item-2>
-                        <img class="banner__image" src="@/assets/images/6.jpg" alt="">
-                        <p class="banner__link">Одежда</p>
-                    </template>
-                </GridBanner>
-            </template>
-            <template v-else-if="optionName === 'Женское'" v-slot:banner>
-                <GridBanner>
-                    <template v-slot:item-1>
-                        <img class="banner__image" src="@/assets/images/7.jpg" alt="">
-                        <p class="banner__link">Обувь</p>
-                    </template>
-                    <template v-slot:item-2>
-                        <img class="banner__image" src="@/assets/images/8.jpg" alt="">
-                        <p class="banner__link">Одежда</p>
-                    </template>
-                </GridBanner>
-            </template>
-            <template v-else-if="optionName === 'Аксессуары'" v-slot:banner>
-                <GridBanner>
-                    <template v-slot:item-1>
-                        <img class="banner__image" src="@/assets/images/9.jpg" alt="">
-                        <p class="banner__link">Кепки</p>
-                    </template>
-                    <template v-slot:item-2>
-                        <img class="banner__image" src="@/assets/images/10.jpg" alt="">
-                        <p class="banner__link">Солнцезащитные очки</p>
-                    </template>
-                    <template v-slot:item-3>
-                        <img class="banner__image" src="@/assets/images/11.jpg" alt="">
-                        <p class="banner__link">Рюкзаки и сумки</p>
-                    </template>
-                    <template v-slot:item-4>
-                        <img class="banner__image" src="@/assets/images/12.jpg" alt="">
-                        <p class="banner__link">Наручные часы</p>
-                    </template>
-                </GridBanner>
-            </template>
-            <template v-else-if="optionName === 'Скидки'" v-slot:banner>
-                <GridBanner>
-                    <template v-slot:item-1>
-                        <img class="banner__image" src="@/assets/images/9.jpg" alt="">
-                        <p class="banner__link">Кепки</p>
-                    </template>
-                    <template v-slot:item-2>
-                        <img class="banner__image" src="@/assets/images/10.jpg" alt="">
-                        <p class="banner__link">Солнцезащитные очки</p>
-                    </template>
-                    <template v-slot:item-3>
-                        <img class="banner__image" src="@/assets/images/11.jpg" alt="">
-                        <p class="banner__link">Рюкзаки и сумки</p>
-                    </template>
-                    <template v-slot:item-4>
-                        <img class="banner__image" src="@/assets/images/12.jpg" alt="">
-                        <p class="banner__link">Наручные часы</p>
-                    </template>
-                </GridBanner>
-            </template>
-            <!-- <template v-slot:col-1>
-                <HeaderDropdownItem :start=0 :end=10 :optionName="optionName" :brands="brands">{{brand}}</HeaderDropdownItem> -->
-
-            <!-- <p class="header-dropdown__title">Все бренды</p>
-                <ul class="header-dropdown__list">
-                    <li class="header-dropdown__item" v-for="brand in brands.slice(0, 10)" :key="brand.id">
-                        <a class="header-dropdown__link link" href="#">
-                            {{ brand.brand }}
-                        </a>
-                    </li>
-                </ul> -->
-
-            <!-- </template>
-            <template v-slot:col-2>
-                <HeaderDropdownItem :start=10 :end=20 :optionName="optionName" v-if="optionName === 'Бренды'" :brands="brands">{{brand}}</HeaderDropdownItem>
-                <HeaderDropdownItem v-else :categories="categories">{{category}}</HeaderDropdownItem> -->
-
-            <!-- <p class="header-dropdown__title">Все категории</p>
-                <ul class="header-dropdown__list">
-                    <li class="header-dropdown__item" v-for="category in categories.slice(0, 10)" :key="category.id">
-                        <a class="header-dropdown__link link" href="#">
-                            {{ category.category }}
-                        </a>
-                    </li>
-                </ul> -->
-
-            <!-- </template> -->
-            <!-- <template v-slot:banner>
-                <div class="banner__item item-1">
-                    <img class="banner__image" src="@/assets/images/1.jpg" alt="">
-                    <p class="banner__link">Adidas Original</p>
+            <template v-slot:body>
+                <div class="div" style="width: 100%; display: flex">
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[0].name" :objectValue="brands"
+                        :objectName='"Все бренды"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[0].name" :objectValue="categories"
+                        :objectName='"Все категории"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[1].name" :objectValue="brands"
+                        :objectName='"Все бренды"' :start=0 :end=36>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[2].name" :objectValue="brands"
+                        :objectName='"Все бренды"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[2].name" :objectValue="categories.filter(v => v.sex === 'm')"
+                        :objectName='"Все категории"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[3].name" :objectValue="brands"
+                        :objectName='"Все бренды"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[3].name" :objectValue="categories.filter(v => v.sex === 'w')"
+                        :objectName='"Все категории"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[4].name" :objectValue="brands"
+                        :objectName='"Все бренды"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[4].name" :objectValue="categories"
+                        :objectName='"Все категории"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[5].name" :objectValue="brands"
+                        :objectName='"Все бренды"' :start=0 :end=12>
+                    </HeaderDropdownItem>
+                    <HeaderDropdownItem v-if="optionName === headerMenuList[5].name" :objectValue="categories"
+                        :objectName='"Все категории"' :start=0 :end=12>
+                    </HeaderDropdownItem>
                 </div>
-                <div class="banner__item item-2">
-                    <img class="banner__image" src="@/assets/images/2.jpg" alt="">
-                    <p class="banner__link">Maison Kitsune</p>
-                </div>
-                <div class="banner__item item-3">
-                    <img class="banner__image" src="@/assets/images/3.jpg" alt="">
-                    <p class="banner__link">Bronze 56k</p>
-                </div>
-                <div class="banner__item item-4">
-                    <img class="banner__image" src="@/assets/images/4.jpg" alt="">
-                    <p class="banner__link">Premiata</p>
-                </div>
-            </template> -->
+            </template>
+            <template v-slot:banner>
+                <GridBanner>
+                    <div class="banner__item"
+                        v-for="(banner, index) in headerMenuBanners.filter(b => b.name === optionName)" :key="index">
+                        <img class="banner__image" :src=banner.path alt="">
+                        <p class="banner__link">{{ banner.value }}</p>
+                    </div>
+                </GridBanner>
+            </template>
         </HeaderDropdown>
     </div>
 </template>
@@ -234,21 +98,9 @@ import HeaderDropdown from './HeaderDropdown.vue'
 import ModalWindow from './ModalWindow.vue'
 import HeaderDropdownItem from './HeaderDropdownItem.vue'
 import GridBanner from './GridBanner.vue'
+
+import { mapActions, mapGetters } from 'vuex'
 export default {
-    // props: {
-    //     brands: {
-    //         type: Array,
-    //         default() {
-    //             return []
-    //         }
-    //     },
-    //     categories: {
-    //         type: Array,
-    //         default() {
-    //             return []
-    //         }
-    //     }
-    // },
     name: 'v-header',
     components: {
         HeaderDropdown,
@@ -258,6 +110,40 @@ export default {
     },
     data() {
         return {
+            headerMenuList: [
+                { value: 'Новинки', name: 'New', path: '/new' },
+                { value: 'Бренды', name: 'Brand', path: '/brand' },
+                { value: 'Мужское', name: 'Male', path: '/male' },
+                { value: 'Женское', name: 'Female', path: '/female' },
+                { value: 'Аксессуары', name: 'Accessories', path: '/accessories' },
+                { value: 'Скидки', name: 'Sale', path: '/sale' },
+            ],
+            headerMenuIcons: [
+                { name: 'search' },
+                { name: 'heart' },
+                { name: 'user' },
+                { name: 'shopping-bag' }
+            ],
+            headerMenuBanners: [
+                { name: 'New', value: 'Adidas Original', path: require('@/assets/images/1.jpg') },
+                { name: 'New', value: 'Maison Kitsune', path: require('@/assets/images/2.jpg') },
+                { name: 'New', value: 'Bronze 56k', path: require('@/assets/images/3.jpg') },
+                { name: 'New', value: 'Premiata', path: require('@/assets/images/4.jpg') },
+                { name: 'Brand', value: 'Maison Kitsune', path: require('@/assets/images/3.jpg') },
+                { name: 'Brand', value: 'Premiata', path: require('@/assets/images/1.jpg') },
+                { name: 'Male', value: 'Обувь', path: require('@/assets/images/5.jpg') },
+                { name: 'Male', value: 'Одежда', path: require('@/assets/images/6.jpg') },
+                { name: 'Female', value: 'Обувь', path: require('@/assets/images/7.jpg') },
+                { name: 'Female', value: 'Одежда', path: require('@/assets/images/8.jpg') },
+                { name: 'Accessories', value: 'Кепки', path: require('@/assets/images/9.jpg') },
+                { name: 'Accessories', value: 'Солнцезащитные очки', path: require('@/assets/images/10.jpg') },
+                { name: 'Accessories', value: 'Рюкзаки и сумки', path: require('@/assets/images/11.jpg') },
+                { name: 'Accessories', value: 'Наручные часы', path: require('@/assets/images/12.jpg') },
+                { name: 'Sale', value: 'Кепки', path: require('@/assets/images/9.jpg') },
+                { name: 'Sale', value: 'Солнцезащитные очки', path: require('@/assets/images/10.jpg') },
+                { name: 'Sale', value: 'Рюкзаки и сумки', path: require('@/assets/images/11.jpg') },
+                { name: 'Sale', value: 'Наручные часы', path: require('@/assets/images/12.jpg') },
+            ],
             areOptionsVisible: false,
             isModalVisible: false,
             optionName: '',
@@ -322,7 +208,15 @@ export default {
             ],
         }
     },
+    computed: {
+        ...mapGetters([
+            'BRANDS'
+        ])
+    },
     methods: {
+        ...mapActions([
+            'GET_BRANDS_FROM_API'
+        ]),
         showModal() {
             this.isModalVisible = true;
         },
@@ -330,38 +224,21 @@ export default {
             this.isModalVisible = false;
         },
     },
+    onMounted(){
+        this.GET_BRANDS_FROM_API()
+        .then((response) => {
+            if(response.data)
+            {
+                console.log('data arrived');
+            }
+        })
+    },
 }
 </script>
 
 <style>
-.header-dropdown__list {
-    height: 400px;
-    flex-wrap: wrap;
-    display: flex;
-    padding: 0;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.header-dropdown__item {
-    list-style: none;
-    margin: 8px 0;
-    margin-right: 2rem;
-
-}
-
-.header-dropdown__item:last-child {
-    margin-right: 0;
-}
-
-.header-dropdown__title {
-    text-transform: uppercase;
-}
-
-
-
-
 .popup {
+
     display: flex;
     flex-direction: column;
 }
@@ -378,12 +255,5 @@ export default {
     border: 0;
     border-bottom: 1px solid #2f2f2f;
     height: 40px;
-}
-
-.popup__button {
-    color: #fff;
-    padding: 10px;
-    border: 0;
-    background: #000;
 }
 </style>

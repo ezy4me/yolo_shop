@@ -1,5 +1,6 @@
 .footer {
     border-top: 1px solid #f2f2f2;
+
     &__body {
         width: 100%;
         padding: 3.6rem 0;
@@ -13,26 +14,31 @@
         align-items: flex-start;
         padding: 0;
     }
-    &__title{
+
+    &__title {
         opacity: 0.8;
 
     }
-    &__subscribe{
+
+    &__subscribe {
         margin: 20px 0;
     }
-    &__input{
-    outline: none;
-    margin: 5px 0;
-    border: 0;
-    border-bottom: 1px solid #2f2f2f;
-    height: 40px;
+
+    &__input {
+        outline: none;
+        margin: 5px 0;
+        border: 0;
+        border-bottom: 1px solid #2f2f2f;
+        height: 40px;
     }
-    &__icon{
+
+    &__icon {
         height: 30px;
         margin-right: 5px;
         opacity: 0.8;
     }
-    &__icon:hover{
+
+    &__icon:hover {
         opacity: 1;
     }
 }

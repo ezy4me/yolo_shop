@@ -54,7 +54,7 @@
     &__item {
         line-height: 75px;
         margin: 0;
-        height: 100%;
+        // height: 100%;
         list-style: none;
         padding: 0 1rem;
     }
@@ -62,7 +62,7 @@
     &__item:hover {
         background: $hover-color;
     }
-
+    
     &__link {
         font: inherit;
         font-weight: 400;

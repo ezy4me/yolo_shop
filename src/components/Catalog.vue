@@ -30,7 +30,6 @@
                       <input v-model="value[1]" class="filter-option__input" type="number" :placeholder=maxV>
                     </div>
                   </div>
-                  
                   <!-- <SliderElement name="slider" :max="1000" :merge="100" :format="{ prefix: '$', decimals: 2 }" /> -->
                 </div>
                 <Slider class="slider" @change="value" name="slider" v-model="value" :max=maxV  :min=minV :merge="400"  :tooltips="false"/>
@@ -229,6 +228,9 @@ export default {
 </script>
 
 <style lang="scss">
+.new {
+  background: #f2f2f2;
+}
 .slider{
   margin: 20px 0;
   --slider-bg: #D1D5DB;
@@ -367,7 +369,7 @@ export default {
     height: 1em;
     flex-shrink: 0;
     flex-grow: 0;
-    background: #f2f2f2;
+    background: #dddddd;
     border-radius: 0.25em;
     margin-right: 0.5em;
     background-repeat: no-repeat;

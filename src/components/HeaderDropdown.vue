@@ -1,6 +1,6 @@
 <template>
-    <div class="dropdown-container">
-        <div class="header-dropdown container">
+    <div class="header-dropdown">
+        <div class="header-dropdown__container">
             <div class="header-dropdown__menu">
                 <div class="header-dropdown__row">
                     <slot name="body">
@@ -14,7 +14,9 @@
                 </slot>
             </div>
         </div>
+
     </div>
+
 
 </template>
 

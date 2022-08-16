@@ -36,3 +36,15 @@ body {
 .btn {
     @extend %btn-style;
 }
+
+.scroll-lock{
+    overflow: hidden;
+}
+
+.icon {
+    transition: 0.8s ease all;
+}
+
+.icon-active {
+    transform: rotate(180deg);
+}

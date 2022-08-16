@@ -40,7 +40,7 @@ export default {
     height: 100%;
     /* margin-top: 0.5rem; */
     /* background: pink; */
-    justify-content: center;
+    justify-content: space-between;
     display: grid;
     justify-items: flex-start;
     grid-auto-flow: row;

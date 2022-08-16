@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="header" :class="{ 'overflow': mobileNav }">
         <div class="header__container container">
             <!-- <div class="header__body"> -->
             <div class="header__body">
@@ -21,10 +21,11 @@
                         </ul>
                     </nav>
                     <fa @click="toggleMobileNav" v-show="mobile" class="icon" icon="bars"
-                        :class="{'icon-active' : mobileNav}"></fa>
-                    <transition name="mobile-nav">
-                        <!-- <nav v-show="mobileNav" class="header__menu-mobile"> -->
-                            <ul  v-show="mobileNav" class="header-menu__list-mobile">
+                        :class="{ 'icon-active': mobileNav }"></fa>
+                    <!-- <ModalWindow  v-show="mobileNav" @close="closeModal">
+                        <template v-slot:body>
+                            <transition name="mobile-nav">
+                            <ul  class="header-menu__list-mobile">
                                 <li class="header-menu__item" v-for="(headerMenuItem, index) in headerMenuList"
                                     :key="index">
                                     <router-link @mouseover="optionName = headerMenuItem.name"
@@ -33,7 +34,19 @@
                                     </router-link>
                                 </li>
                             </ul>
-                        <!-- </nav> -->
+                    </transition>
+                        </template>
+                    </ModalWindow> -->
+                    <transition name="mobile-nav">
+                        <ul v-show="mobileNav" class="header-menu__list-mobile">
+                            <li class="header-menu__item" v-for="(headerMenuItem, index) in headerMenuList"
+                                :key="index">
+                                <router-link @mouseover="optionName = headerMenuItem.name" :to="headerMenuItem.path"
+                                    class="header-menu__link link">
+                                    {{ headerMenuItem.value }}
+                                </router-link>
+                            </li>
+                        </ul>
                     </transition>
                 </div>
             </div>
@@ -125,11 +138,11 @@ export default {
         HeaderDropdownItem,
         GridBanner
     },
-    created(){
+    created() {
         window.addEventListener("resize", this.checkScreen);
         this.checkScreen();
-        window.addEventListener("scroll", this.scrollUpdate);
-        this.scrollUpdate();
+        // window.addEventListener("scroll", this.scrollUpdate);
+        // this.scrollUpdate();
     },
     data() {
         return {
@@ -238,12 +251,12 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'BRANDS','CATEGORIES'
+            'BRANDS', 'CATEGORIES'
         ])
     },
     methods: {
         ...mapActions([
-            'GET_BRANDS_FROM_API','GET_CATEGORIES_FROM_API'
+            'GET_BRANDS_FROM_API', 'GET_CATEGORIES_FROM_API'
         ]),
         showModal() {
             this.isModalVisible = true;
@@ -251,12 +264,14 @@ export default {
         closeModal() {
             this.isModalVisible = false;
         },
-        toggleMobileNav(){
+        toggleMobileNav() {
             this.mobileNav = !this.mobileNav;
+            let hiddenBody = document.body;
+            this.mobileNav ? hiddenBody.classList.add("scroll-lock") : hiddenBody.classList.remove("scroll-lock");
         },
-        checkScreen(){
+        checkScreen() {
             this.windowWidth = window.innerWidth;
-            if(this.windowWidth <= 860){
+            if (this.windowWidth <= 860) {
                 this.mobile = true;
                 return;
             }
@@ -266,16 +281,16 @@ export default {
                 return;
             }
         },
-        scrollUpdate(){
-            const scrollPosition = window.scrollY;
-            if(scrollPosition != window.innerHeight)
-            {
-                this.mobileNav = false;
-                return;
-            }
-        }
+        // scrollUpdate(){
+        //     const scrollPosition = window.scrollY;
+        //     if(scrollPosition != window.innerHeight)
+        //     {
+        //         this.mobileNav = false;
+        //         return;
+        //     }
+        // }
     },
-    mounted(){
+    mounted() {
         this.GET_BRANDS_FROM_API();
         this.GET_CATEGORIES_FROM_API();
     },
@@ -283,50 +298,7 @@ export default {
 </script>
 
 <style>
-:root {
-  --main-bg-color: pink;
-}
-.icon{
-    transition: 0.8s ease all;
-}
-.icon-active{
-    transform: rotate(180deg);
-}
-.header-menu__list-mobile{
-    
-    padding: 0;
-    background: white;
-    z-index: 99;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    width: 100%;
-    max-width: 250px;
-    /* min-height: auto; */
-    height: 100%;
-    top: 4.7rem;
-    left: 0;
-}
-.header__menu-mobile{
-    width: 100%;
-}
-.mobile-nav{
-}
-.mobile-nav-enter-active,
-.mobile-nav-leave-active{
-    transition: 1s ease all;
-    
-}
-.mobile-nav-enter-from,
-.mobile-nav-leave-to{
-    transform: translateX(-250px);
-}
-.mobile-nav-enter-to{
-    transform: translateX(0);
-}
-
 .popup {
-
     display: flex;
     flex-direction: column;
 }

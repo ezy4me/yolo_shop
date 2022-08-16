@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <SaleBanner></SaleBanner>
+    <!-- <SaleBanner></SaleBanner> -->
     <div class="product-slider" style="padding:20px 0">
       <h3 class="product-slider__title">Популярные товары</h3>
       <Carousel></Carousel>
@@ -34,11 +34,11 @@
 
 <script>
 import Carousel from '@/components/Carousel.vue'
-import SaleBanner from '@/components/SaleBanner.vue'
+// import SaleBanner from '@/components/SaleBanner.vue'
 export default {
 components: {
     Carousel,
-    SaleBanner,
+    // SaleBanner,
   },
 }
 </script>

@@ -1,6 +1,4 @@
 .header {
-    // position: sticky;
-    // top: 0;
     background: #fff;
     margin-top: 16px;
 
@@ -19,6 +17,11 @@
 
 
     &__menu {}
+
+
+    &__menu-mobile {
+        width: 100%;
+    }
 
     &__actions {
         position: relative;
@@ -51,10 +54,24 @@
         padding: 0;
     }
 
+    &__list-mobile {
+        overflow: auto;
+        padding: 0;
+        background: white;
+        z-index: 99;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        max-width: 250px;
+        height: 100%;
+        top: 4.7rem;
+        left: 0;
+    }
+    
     &__item {
         line-height: 75px;
         margin: 0;
-        // height: 100%;
         list-style: none;
         padding: 0 1rem;
     }
@@ -62,10 +79,26 @@
     &__item:hover {
         background: $hover-color;
     }
-    
+
     &__link {
         font: inherit;
         font-weight: 400;
         font-size: $font-size;
     }
+}
+
+.mobile-nav {}
+
+.mobile-nav-enter-active,
+.mobile-nav-leave-active {
+    transition: 1s ease all;
+}
+
+.mobile-nav-enter-from,
+.mobile-nav-leave-to {
+    transform: translateX(-250px);
+}
+
+.mobile-nav-enter-to {
+    transform: translateX(0);
 }
